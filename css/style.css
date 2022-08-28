@@ -1,0 +1,104 @@
+body{
+    margin: 0px;
+}
+.main,
+.slider-1{
+    position: relative;
+    width: 100vw;
+    height: 490px;
+}
+.slider-1-overflow{
+    position: absolute;
+    width: 100vw;
+    height: 490px;
+    left: 0px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 14.37%, rgba(0, 0, 0, 0.8) 100%);
+}
+#slider-1-full{
+    width: 500vw;
+    height: 490px;
+    top: 0px;
+    transition: left 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.slider-1-gradient{
+    position: relative;
+    float: left;
+    width: 100vw;
+    height: 490px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 14.37%, rgba(0, 0, 0, 0.8) 100%);
+}
+.slider-1-1,
+.slider-1-2,
+.slider-1-3{
+    position: relative;
+    float: left;
+    width: 100vw;
+    height: 490px;
+}
+.slider-1-1{
+    background: no-repeat url(../img/maxresdefault\ \(1\)\ 2.png) center/cover;
+}
+.slider-1-2{
+    background: no-repeat url(../img/montenegro-hero\ 1.png) center/cover;
+}
+.slider-1-3{
+    background: no-repeat url(../img/Rovinj-15\ 1.png) center/cover;
+}
+label, a{
+    cursor: pointer;
+}
+.slider-1 input{
+    display: none;
+}
+#slider-1-btn{
+    position: absolute;
+    width: 75px;
+    height: 7px;
+    left: 200px;
+    top: 423px;
+}
+#slider-1-btn label{
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    opacity: 0.5;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    transition: 500ms;
+}
+.slider-1-btn-2{
+    left: 17px;
+}
+.slider-1-btn-3{
+    left: 34px;
+}
+#slider-1 label:hover,
+#switch1:checked ~ #slider-1-btn label:nth-child(1),
+#switch2:checked ~ #slider-1-btn label:nth-child(2),
+#switch3:checked ~ #slider-1-btn label:nth-child(3){
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    opacity: 1;
+}
+#switch1:checked ~ .slider-1-overflow #slider-1-full{
+    position: relative;
+    width: 500vw;
+    height: 490px;
+    left: 0px;
+}
+#switch2:checked ~ .slider-1-overflow #slider-1-full{
+    position: relative;
+    width: 500vw;
+    height: 490px;
+    left: -100vw;
+}
+#switch3:checked ~ .slider-1-overflow #slider-1-full{
+    position: relative;
+    width: 500vw;
+    height: 490px;
+    left: -200vw;
+}
