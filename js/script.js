@@ -155,3 +155,52 @@ rightBtn3.addEventListener('click', moveToNextSlide3);
 leftBtn3.addEventListener('click', moveToPreviousSlide3);
 
 startSlide3();
+
+var slider4Owrerflow = document.querySelector(".slider-4-overflow");
+var slider4Full = document.querySelector(".slider-4-full");
+var slides4 = document.querySelectorAll(".slide-4");
+
+let pressed = true;
+var startx;
+var x;
+
+slider4Owrerflow.addEventListener('mousedown', (e) => {
+    pressed = true;
+    startx = e.offsetX - slider4Full.offsetLeft;
+    slider4Full.style.cursor = 'grabbing'
+    console.log(e.offsetX);
+});
+
+slider4Owrerflow.addEventListener('mouseenter', () => {
+    slider4Full.style.cursor = 'grab'
+});
+
+slider4Owrerflow.addEventListener('mouseup', () => {
+    slider4Full.style.cursor = 'grab'
+});
+
+window.addEventListener('mouseup', () => {
+    pressed = false;
+});
+
+slider4Owrerflow.addEventListener('mousemove', (e) => {
+    if(!pressed){return;}
+    e.preventDefault();
+    x = e.offsetX;
+    slider4Full.style.left = `${x-startx}px`;
+    CheckBorder()
+});
+
+function CheckBorder(){
+    var border = slider4Owrerflow.getBoundingClientRect();
+    var full = slider4Full.getBoundingClientRect();
+
+    if(parseInt(slider4Full.style.left)>0){
+        slider4Full.style.left = '0px'
+    }
+    else if (full.right < border.right){
+        slider4Full.style.left = `-${full.width - border.width}px`
+    }
+    console.log(full.right);
+    console.log(border.right);
+}
