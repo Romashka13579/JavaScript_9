@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="css/style.css">
     <title>JavaScript_9</title>
 </head>
+
 <body>
     <div class="main">
         <div class="slider-1">
-            <input type="radio" name="slider-1-point" id="switch1">
-            <input type="radio" name="slider-1-point" id="switch2"checked>
+            <input type="radio" name="slider-1-point" id="switch1" checked>
+            <input type="radio" name="slider-1-point" id="switch2">
             <input type="radio" name="slider-1-point" id="switch3">
             <div class="slider-1-overflow">
                 <div id="slider-1-full">
@@ -27,13 +29,34 @@
                 </div>
             </div>
             <div id="slider-1-btns-1">
-                <label class="slider-1-btn-1" for="switch1" onclick="setTimeout(Slider_1(1),500)"></label>
-                <label class="slider-1-btn-2" for="switch2" onclick="setTimeout(Slider_1(),500)"></label>
-                <label class="slider-1-btn-3" for="switch3" onclick="setTimeout(Slider_1(3),500)"></label>
+                <label class="slider-1-btn-1" for="switch1"></label>
+                <label class="slider-1-btn-2" for="switch2"></label>
+                <label class="slider-1-btn-3" for="switch3"></label>
+            </div>
+        </div>
+
+        <div class="slider-2">
+            <div class="slider-2-overflow">
+                <div id="slider-2-full">
+                    <div id="slider-2-2">
+                        <div class="slider-2-gradient"></div>
+                    </div>
+                    <div id="slider-2-3">
+                        <div class="slider-2-gradient"></div>
+                    </div>
+                    <div id="slider-2-1">
+                        <div class="slider-2-gradient"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="slider-2-btns">
+                <button id="right-btn"></button>
+                <button id="left-btn"></button>
             </div>
         </div>
     </div>
 
     <script type="text/javascript" src="js/script.js"></script>
 </body>
+
 </html>
