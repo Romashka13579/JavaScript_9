@@ -6,7 +6,7 @@ body {
     display: grid;
     align-items: center;
     grid-template-columns: 1;
-    grid-template-rows: repeat(2, 100vh);
+    grid-template-rows: repeat(3, 100vh);
 }
 
 .slider-1 {
@@ -210,4 +210,70 @@ button {
 #left-btn{
     right: 30px;
     left: auto;
+}
+
+
+
+.slider-3 {
+    position: relative;
+    width: 100%;
+    height: 490px;
+}
+
+.slider-3-overflow {
+    position: absolute;
+    width: 100%;
+    height: 490px;
+    left: 0px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.slider-3-full {
+    display: flex;
+    width: auto;
+    height: 490px;
+    top: 0px;
+    transition: left 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.slide-3{
+    position: relative;
+    float: left;
+    width: auto;
+    height: auto;
+}
+
+#slider-3-1,
+#slider-3-2,
+#slider-3-3 {
+    width: 100vw;
+    height: 490px;
+}
+
+#slider-3-1 {
+    background: no-repeat url(../img/maxresdefault\ \(1\)\ 2.png) center/cover;
+}
+
+#slider-3-2 {
+    background: no-repeat url(../img/montenegro-hero\ 1.png) center/cover;
+}
+
+#slider-3-3 {
+    background: no-repeat url(../img/Rovinj-15\ 1.png) center/cover;
+}
+#slider-3-btns{
+    position: absolute;
+    top: 0px;
+    display: flex;
+    width: 100%;
+    height: 490px;
+}
+#left-btn-3,
+#right-btn-3{
+    border: none;
+    width: 50%;
+    height: 490px;
+    background: none;
+    padding: 0px;
 }

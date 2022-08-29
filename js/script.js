@@ -76,3 +76,82 @@ rightBtn.addEventListener('click', moveToNextSlide);
 leftBtn.addEventListener('click', moveToPreviousSlide);
 
 startSlide();
+
+var slider3Owrerflow = document.querySelector(".slider-3-overflow");
+var slider3Full = document.querySelector(".slider-3-full");
+var rightBtn3 = document.getElementById("right-btn-3");
+var leftBtn3 = document.getElementById("left-btn-3");
+var slides3 = document.querySelectorAll(".slide-3");
+
+var i_3 = 1;
+var slideId3;
+var x = -1;
+
+var firstClone3 = slides3[0].cloneNode(true);
+var lastClone3 = slides3[slides3.length - 1].cloneNode(true);
+
+firstClone3.id = "first-clone-3";
+lastClone3.id = "last-clone-3";
+
+slider3Full.append(firstClone3);
+slider3Full.prepend(lastClone3);
+
+const slideWidth3 = slides3[i_3].clientWidth;
+
+slider3Full.style.transform = `translateX(${-slideWidth * i_3}px)`;
+
+const startSlide3 = () => {
+    slideId3 = setInterval(() => {
+        moveToNextSlide3();
+    }, interval);
+}
+
+slider3Full.addEventListener('transitionend', () => {
+    slides3 = document.querySelectorAll(".slide-3");
+    if (slides3[i_3].id === firstClone3.id) {
+        slider3Full.style.transition = "none";
+        i_3 = 1;
+        slider3Full.style.transform = `translateX(${-slideWidth * i_3}px)`;
+    }
+    slides3 = document.querySelectorAll(".slide-3");
+    if (slides3[i_3].id === lastClone3.id) {
+        slider3Full.style.transition = "none";
+        i_3 = slides3.length - 2;
+        slider3Full.style.transform = `translateX(${-slideWidth * i_3}px)`;
+    }
+});
+
+const moveToNextSlide3 = () => {
+    slides3 = document.querySelectorAll(".slide-3");
+    if(i_3 >=slides3.length - 1){return;}
+    i_3++;
+    slider3Full.style.transform = `translateX(${-slideWidth * i_3}px)`;
+    slider3Full.style.transition = ".7s";
+}
+
+const moveToPreviousSlide3 = () => {
+    slides3 = document.querySelectorAll(".slide-3");
+    if(i_3 <= 0){return;}
+    i_3--;
+    slider3Full.style.transform = `translateX(${-slideWidth * i_3}px)`;
+    slider3Full.style.transition = ".7s";
+}
+
+slider3Full.addEventListener('mouseenter', () => {
+    clearInterval(slideId3);
+});
+rightBtn3.addEventListener('mouseenter', () => {
+    clearInterval(slideId3);
+});
+leftBtn3.addEventListener('mouseenter', () => {
+    clearInterval(slideId3);
+});
+
+slider3Full.addEventListener('mouseout', startSlide3);
+rightBtn3.addEventListener('mouseout', startSlide3);
+leftBtn3.addEventListener('mouseout', startSlide3);
+
+rightBtn3.addEventListener('click', moveToNextSlide3);
+leftBtn3.addEventListener('click', moveToPreviousSlide3);
+
+startSlide3();
