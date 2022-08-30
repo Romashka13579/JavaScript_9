@@ -226,8 +226,9 @@ slider5Full.style.gridTemplateColumns = "repeat(5, 1fr)"
 slides5 = document.querySelectorAll(".slide-5");
 
 const slideWidth5 = slides5[i_5].clientWidth;
+console.log(slideWidth5);
 
-slider5Full.style.transform = `translateX(${-slideWidth * i_5}px)`;
+slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
 
 const startSlide5 = () => {
     slideId5 = setInterval(() => {
@@ -240,13 +241,13 @@ slider5Full.addEventListener('transitionend', () => {
     if (slides5[i_5].id === firstClone5.id) {
         slider5Full.style.transition = "none";
         i_5 = 1;
-        slider5Full.style.transform = `translateX(${-slideWidth * i_5}px)`;
+        slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
     }
     slides5 = document.querySelectorAll(".slide-5");
     if (slides5[i_5].id === lastClone5.id) {
         slider5Full.style.transition = "none";
         i_5 = slides5.length - 2;
-        slider5Full.style.transform = `translateX(${-slideWidth * i_5}px)`;
+        slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
     }
 });
 
@@ -254,7 +255,7 @@ const moveToNextSlide5 = () => {
     slides5 = document.querySelectorAll(".slide-5");
     if(i_5 >=slides5.length - 1){return;}
     i_5++;
-    slider5Full.style.transform = `translateX(${-slideWidth * i_5}px)`;
+    slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
     slider5Full.style.transition = ".7s";
 }
 
@@ -262,7 +263,7 @@ const moveToPreviousSlide5 = () => {
     slides5 = document.querySelectorAll(".slide-5");
     if(i_5 <= 0){return;}
     i_5--;
-    slider5Full.style.transform = `translateX(${-slideWidth * i_5}px)`;
+    slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
     slider5Full.style.transition = ".7s";
 }
 
@@ -282,7 +283,6 @@ slider5Owrerflow.addEventListener('mousedown', (e) => {
     pressed_5 = true;
     startx_5 = e.clientX - slider5Full.offsetLeft;
     slider5Full.style.cursor = 'grabbing'
-    console.log(e.offsetX);
 });
 
 slider5Owrerflow.addEventListener('mouseenter', () => {
