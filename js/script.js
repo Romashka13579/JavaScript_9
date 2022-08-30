@@ -167,7 +167,6 @@ slider4Owrerflow.addEventListener('mousedown', (e) => {
     pressed = true;
     startx = e.clientX - slider4Full.offsetLeft;
     slider4Full.style.cursor = 'grabbing'
-    console.log(e.offsetX);
 });
 
 slider4Owrerflow.addEventListener('mouseenter', () => {
@@ -248,7 +247,7 @@ slider5Owrerflow.addEventListener('mouseup', () => {
     slider5Full.style.cursor = 'grab'
 });
 
-window.addEventListener('mouseup', () => {
+slider5Owrerflow.addEventListener('mouseup', () => {
     pressed_5 = false;
     SlideByGrab(difference_newold);
     if (slides5[i_5].id === firstClone5.id) {
@@ -274,35 +273,21 @@ slider5Owrerflow.addEventListener('mousemove', (e) => {
     slider5Full.style.transition = "none"
     difference_newold = newx_5-oldx_5;
     slider5Full.style.transform = `translateX(${(-slideWidth5 * i_5) + difference_newold}px)`;
-    CheckBorder5()
 });
 
 function SlideByGrab(difference_newold){
-    if(difference_newold < -1){
+    if(difference_newold < -0.001){
         i_5++;
         slider5Full.style.transition = ".7s"
         slider5Full.style.transform = `translateX(${(-slideWidth5 * i_5)}px)`;
     }
-    if(difference_newold > 1){
-        console.log("1");
+    else if(difference_newold > 0.001){
         i_5--;
         slider5Full.style.transition = ".7s"
         slider5Full.style.transform = `translateX(${(-slideWidth5 * i_5)}px)`;
     }
+    else if (difference_newold == 0){}
 }
-
-// function CheckBorder5(){
-//     var border_5 = slider5Owrerflow.getBoundingClientRect();
-//     var full_5 = slider5Full.getBoundingClientRect();
-
-//     if(parseInt(slider5Full.style.left)> -1200){
-//         slider5Full.style.transform = "-1200px";
-//     }
-//     else if (full_5.right < border_5.right){
-//         slider5Full.style.transform = "-4800px";
-//     }
-// }
-
 
 // const startSlide5 = () => {
 //     slideId5 = setInterval(() => {
