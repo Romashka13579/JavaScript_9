@@ -156,17 +156,16 @@ leftBtn3.addEventListener('click', moveToPreviousSlide3);
 
 startSlide3();
 
-var slider4Owrerflow = document.querySelector(".slider-4-overflow");
-var slider4Full = document.querySelector(".slider-4-full");
-var slides4 = document.querySelectorAll(".slide-4");
+let slider4Owrerflow = document.querySelector(".slider-4-overflow");
+let slider4Full = document.querySelector(".slider-4-full");
 
-let pressed = true;
-var startx;
-var x;
+let pressed = false;
+let startx;
+let x_4;
 
 slider4Owrerflow.addEventListener('mousedown', (e) => {
     pressed = true;
-    startx = e.offsetX - slider4Full.offsetLeft;
+    startx = e.clientX - slider4Full.offsetLeft;
     slider4Full.style.cursor = 'grabbing'
     console.log(e.offsetX);
 });
@@ -186,7 +185,7 @@ window.addEventListener('mouseup', () => {
 slider4Owrerflow.addEventListener('mousemove', (e) => {
     if(!pressed){return;}
     e.preventDefault();
-    x = e.offsetX;
+    x = e.clientX;
     slider4Full.style.left = `${x-startx}px`;
     CheckBorder()
 });
@@ -201,6 +200,4 @@ function CheckBorder(){
     else if (full.right < border.right){
         slider4Full.style.left = `-${full.width - border.width}px`
     }
-    console.log(full.right);
-    console.log(border.right);
 }
