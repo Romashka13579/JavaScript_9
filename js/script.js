@@ -230,58 +230,74 @@ console.log(slideWidth5);
 
 slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
 
-const startSlide5 = () => {
-    slideId5 = setInterval(() => {
-        moveToNextSlide5();
-    }, interval);
-}
+// const startSlide5 = () => {
+//     slideId5 = setInterval(() => {
+//         moveToNextSlide5();
+//     }, interval);
+// }
 
-slider5Full.addEventListener('transitionend', () => {
-    slides5 = document.querySelectorAll(".slide-5");
-    if (slides5[i_5].id === firstClone5.id) {
-        slider5Full.style.transition = "none";
-        i_5 = 1;
-        slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
-    }
-    slides5 = document.querySelectorAll(".slide-5");
-    if (slides5[i_5].id === lastClone5.id) {
-        slider5Full.style.transition = "none";
-        i_5 = slides5.length - 2;
-        slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
-    }
-});
+// slider5Full.addEventListener('transitionend', () => {
+//     slides5 = document.querySelectorAll(".slide-5");
+//     if (slides5[i_5].id === firstClone5.id) {
+//         slider5Full.style.transition = "none";
+//         i_5 = 1;
+//         slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
+//     }
+//     slides5 = document.querySelectorAll(".slide-5");
+//     if (slides5[i_5].id === lastClone5.id) {
+//         slider5Full.style.transition = "none";
+//         i_5 = slides5.length - 2;
+//         slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
+//     }
+// });
 
-const moveToNextSlide5 = () => {
-    slides5 = document.querySelectorAll(".slide-5");
-    if(i_5 >=slides5.length - 1){return;}
-    i_5++;
-    slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
-    slider5Full.style.transition = ".7s";
-}
+// const moveToNextSlide5 = () => {
+//     slides5 = document.querySelectorAll(".slide-5");
+//     if(i_5 >=slides5.length - 1){return;}
+//     i_5++;
+//     slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
+//     slider5Full.style.transition = ".7s";
+// }
 
-const moveToPreviousSlide5 = () => {
-    slides5 = document.querySelectorAll(".slide-5");
-    if(i_5 <= 0){return;}
-    i_5--;
-    slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
-    slider5Full.style.transition = ".7s";
-}
+// const moveToPreviousSlide5 = () => {
+//     slides5 = document.querySelectorAll(".slide-5");
+//     if(i_5 <= 0){return;}
+//     i_5--;
+//     slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
+//     slider5Full.style.transition = ".7s";
+// }
 
-slider5Full.addEventListener('mouseenter', () => {
-    clearInterval(slideId5);
-});
+// slider5Full.addEventListener('mouseenter', () => {
+//     clearInterval(slideId5);
+// });
 
-slider5Full.addEventListener('mouseout', startSlide3);;
+// slider5Full.addEventListener('mouseout', startSlide5);
 
-startSlide5();
+// startSlide5();
+
+// slider5Full.addEventListener('transitionend', () => {
+//     slides5 = document.querySelectorAll(".slide-5");
+//     if (slides5[i_5].id === firstClone5.id) {
+//         slider5Full.style.transition = "none";
+//         i_5 = 1;
+//         slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
+//     }
+//     slides5 = document.querySelectorAll(".slide-5");
+//     if (slides5[i_5].id === lastClone5.id) {
+//         slider5Full.style.transition = "none";
+//         i_5 = slides5.length - 2;
+//         slider5Full.style.transform = `translateX(${-slideWidth5 * i_5}px)`;
+//     }
+// });
 
 let pressed_5 = false;
-let startx_5;
-let x_55;
+let oldx_5;
+let newx_5;
+var difference_newold;
 
 slider5Owrerflow.addEventListener('mousedown', (e) => {
     pressed_5 = true;
-    startx_5 = e.clientX - slider5Full.offsetLeft;
+    oldx_5 = e.clientX - slider5Full.offsetLeft;
     slider5Full.style.cursor = 'grabbing'
 });
 
@@ -295,24 +311,53 @@ slider5Owrerflow.addEventListener('mouseup', () => {
 
 window.addEventListener('mouseup', () => {
     pressed_5 = false;
+    SlideByGrab(difference_newold);
+    slides5 = document.querySelectorAll(".slide-5");
+    if (slides5[i_5].id === firstClone5.id) {
+        slider5Full.style.transition = ".7s"
+        i_5 = 1;
+        slider5Full.style.transform = `translateX(${(-slideWidth5 * i_5)-difference_newold}px)`;
+    }
+    slides5 = document.querySelectorAll(".slide-5");
+    if (slides5[i_5].id === lastClone5.id) {
+        slider5Full.style.transition = ".7s"
+        i_5 = slides5.length - 2;
+        slider5Full.style.transform = `translateX(${(-slideWidth5 * i_5)-difference_newold}px)`;
+    }
 });
 
 slider5Owrerflow.addEventListener('mousemove', (e) => {
     if(!pressed_5){return;}
     e.preventDefault();
-    x_55 = e.clientX;
-    slider5Full.style.left = `${x_55-startx_5}px`;
-    CheckBorder5()
+    newx_5 = e.clientX;
+    slider5Full.style.transition = "none"
+    difference_newold = newx_5-oldx_5;
+    slider5Full.style.left = `${difference_newold}px`;
+    // CheckBorder5()
 });
 
-function CheckBorder5(){
-    var border_5 = slider5Owrerflow.getBoundingClientRect();
-    var full_5 = slider5Full.getBoundingClientRect();
-
-    if(parseInt(slider5Full.style.left)>0){
-        slider5Full.style.left = '0px'
+function SlideByGrab(difference_newold){
+    if(difference_newold <= -50){
+        i_5++;
+        slider5Full.style.transition = ".7s"
+        slider5Full.style.transform = `translateX(${(-slideWidth5 * i_5)-difference_newold}px)`;
     }
-    else if (full_5.right < border_5.right){
-        slider5Full.style.left = `-${full_5.width - border_5.width}px`
+    if(difference_newold >= 50){
+        console.log("1");
+        i_5--;
+        slider5Full.style.transition = ".7s"
+        slider5Full.style.transform = `translateX(${(slideWidth5 * i_5)-difference_newold}px)`;
     }
 }
+
+// function CheckBorder5(){
+//     var border_5 = slider5Owrerflow.getBoundingClientRect();
+//     var full_5 = slider5Full.getBoundingClientRect();
+
+//     if(parseInt(slider5Full.style.left)>0){
+//         slider5Full.style.left = '0px'
+//     }
+//     else if (full_5.right < border_5.right){
+//         slider5Full.style.left = `-${full_5.width - border_5.width}px`
+//     }
+// }
